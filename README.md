@@ -27,7 +27,7 @@ hotpVerify({ secret: secret.base32, counter: 1, token })
 ### Totp
 
 ```ts
-import Secret, { totpGenerate, totpVerify } from 'node-2fa';
+import Secret, { totpGenerate, totpVerify } from 'node-tfa';
 
 const secret = new Secret({ label: 'USER_NAME', issuer: 'APP_NAME' })
 
@@ -39,7 +39,7 @@ totpVerify({ secret: secret.base32, token })
 ### Google Authenticator
 
 ```ts
-import Secret, { totpVerify } from 'node-2fa';
+import Secret, { totpVerify } from 'node-tfa';
 
 const secret = new Secret({ label: 'USER_NAME', issuer: 'APP_NAME', qr_code: true, type: 'totp' })
 
