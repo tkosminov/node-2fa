@@ -66,7 +66,7 @@ class Secret {
   private issuer: string = '2FA_Test';
 
   constructor(options?: TSecretOptions) {
-    this.ascii = this.generateASCIIToken(options.symbols);
+    this.ascii = this.generateASCIIToken((options || {}).symbols);
     this.hex = Buffer.from(this.ascii, 'ascii').toString('hex');
     this.base32 = encode(Buffer.from(this.ascii)).toString().replace(/=/g, '');
 
