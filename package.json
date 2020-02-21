@@ -1,7 +1,7 @@
 {
-  "name": "2fa",
+  "name": "node-2fa",
   "version": "1.0.0",
-  "description": "2fa",
+  "description": "Two-factor authentication for nodejs",
   "engineStrict": true,
   "author": "t.kosminov",
   "license": "ISC",
