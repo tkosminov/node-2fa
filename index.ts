@@ -50,7 +50,7 @@ interface ISecretOptions {
   symbols?: boolean; // Use special symbols in secret key?
 }
 
-type TSecretOptions = ISecretOptions & TOtpauthURLOptions;
+type TSecretOptions = ISecretOptions & Partial<TOtpauthURLOptions>
 
 type TOtpauthURLQuery = Omit<TSecretOptions, 'type'> & { secret: string; }
 
@@ -80,7 +80,7 @@ class Secret {
       }
 
       if (options.qr_code) {
-        const otpauthURL = this.otpauthURL(options)
+        const otpauthURL = this.otpauthURL({ ...options } as TOtpauthURLOptions)
         this.qr_code = `${this.googleChartUrl}${encodeURIComponent(otpauthURL)}`;
       }
     }
