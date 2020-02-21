@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm i
+npm i node-tfa
 ```
 
 ## Usage
