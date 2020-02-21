@@ -1,5 +1,5 @@
 {
-  "name": "node-2fa",
+  "name": "node-tfa",
   "version": "1.0.0",
   "description": "Two-factor authentication for nodejs",
   "engineStrict": true,
