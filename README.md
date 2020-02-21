@@ -1,4 +1,4 @@
-# node-2fa
+# node-tfa
 
 ## Dependencies
 
@@ -15,7 +15,7 @@ npm i
 ### Hotp
 
 ```ts
-import Secret, { hotpGenerate, hotpVerify } from 'node-2fa';
+import Secret, { hotpGenerate, hotpVerify } from 'node-tfa';
 
 const secret = new Secret({ label: 'USER_NAME', issuer: 'APP_NAME' })
 
