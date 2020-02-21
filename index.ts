@@ -240,8 +240,6 @@ export const hotpVerify = function(options: THotpVerify) {
     return false;
   }
 
-  console.log(data.counter);
-
   if (parseInt(hotpGenerate(data), 10) === tokenNum) {
     return true;
   }
