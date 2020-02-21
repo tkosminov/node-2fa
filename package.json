@@ -4,12 +4,20 @@
   "description": "2fa",
   "engineStrict": true,
   "author": "t.kosminov",
-  "license": "MIT",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:TimurRK/node-2fa.git"
+  },
+  "keywords": ["2fa", "tfa", "authenticator"],
   "engines": {
     "node": "12.14.1"
   },
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json"
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "prepublish": "tsc"
   },
   "dependencies": {
     "crypto": "^1.0.1",
