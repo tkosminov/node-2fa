@@ -15,8 +15,8 @@ type TEncoding = 'ascii' | 'hex' | 'base32';
 type TType = 'totp' | 'hotp';
 
 interface IHmacDigest {
-  algorithm: TAlgorithm;
-  encoding: TEncoding;
+  algorithm?: TAlgorithm;
+  encoding?: TEncoding;
   counter?: number;
 }
 
@@ -102,7 +102,7 @@ class Secret {
   };
 
   private otpauthURL(options: TOtpauthURLOptions) {
-    const data: TOtpauthURLOptions = { ...defaultOptions, ...options }
+    const data = { ...defaultOptions, ...options } as TOtpauthURLOptions;
 
     if (!data.type) {
       throw new Error('Type must be `hotp` or `totp`')
@@ -135,7 +135,7 @@ class Secret {
 }
 
 const hmacDigest = function(options: THmacDigest) {
-  const data: THmacDigest = { ...defaultOptions, ...options }
+  const data = { ...defaultOptions, ...options } as THmacDigest;
 
   let secretBuffer: Buffer;
 
@@ -195,7 +195,7 @@ const hmacDigest = function(options: THmacDigest) {
  * @param options options
  */
 export const hotpGenerate = function(options: THotp) {
-  const data: THotp = { ...defaultOptions, ...options }
+  const data = { ...defaultOptions, ...options } as THotp;
 
   if (!data.secret) {
     throw new Error('Secret must exist');
@@ -220,7 +220,7 @@ export const hotpGenerate = function(options: THotp) {
  * @param options options
  */
 export const hotpVerify = function(options: THotpVerify) {
-  const data: THotpVerify = { ...defaultOptions, ...options}
+  const data = { ...defaultOptions, ...options} as THotpVerify;
 
   if (!data.secret) {
     throw new Error('Secret must exist')
