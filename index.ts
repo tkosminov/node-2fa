@@ -1,6 +1,7 @@
-import { encode, decode} from 'hi-base32';
+import { encode, decode } from 'hi-base32';
 import { format } from 'url';
 import { createHmac } from 'crypto';
+import { nanoid } from 'nanoid';
 
 const defaultOptions = {
   counter: 0, // Authenticate attempt
@@ -66,7 +67,7 @@ class Secret {
   private issuer: string = '2FA_Test';
 
   constructor(options?: TSecretOptions) {
-    this.ascii = this.generateASCIIToken((options || {}).symbols);
+    this.ascii = nanoid(32);
     this.hex = Buffer.from(this.ascii, 'ascii').toString('hex');
     this.base32 = encode(Buffer.from(this.ascii)).toString().replace(/=/g, '');
 
@@ -85,21 +86,6 @@ class Secret {
       }
     }
   }
-
-  private generateASCIIToken(symbols: boolean, length: number = 32) {
-    let text = '';
-    let possible = '0123456789QAZWSXEDCRFVTGBYHNUJMIKOLPqazwsxedcrfvtgbyhnujmikolp';
-  
-    if (symbols) {
-      possible += '!@#$%^&*()<>?/[]{},.:;';
-    }
-  
-    for (let i = 0; i < length; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-  
-    return text;
-  };
 
   private otpauthURL(options: TOtpauthURLOptions) {
     const data = { ...defaultOptions, ...options } as TOtpauthURLOptions;
@@ -137,41 +123,10 @@ class Secret {
 const hmacDigest = function(options: THmacDigest) {
   const data = { ...defaultOptions, ...options } as THmacDigest;
 
-  let secretBuffer: Buffer;
-
   if (!Buffer.isBuffer(data.secret)) {
     if (data.encoding === 'base32') {
       data.secret = decode(data.secret);
     }
-
-    secretBuffer = Buffer.from(data.secret, 'ascii')
-  } else {
-    secretBuffer = data.secret;
-  }
-
-  let secret_buffer_size: number | null = null;
-
-  switch(data.algorithm) {
-    case 'SHA1':
-      secret_buffer_size = 20;
-      break;
-    case 'SHA256':
-      secret_buffer_size = 32;
-      break;
-    case 'SHA512':
-      secret_buffer_size = 64;
-      break;
-    default:
-      secret_buffer_size = null;
-      break;
-  }
-
-  if (secret_buffer_size && secretBuffer.length !== secret_buffer_size) {
-    secretBuffer = Buffer.from(
-      Array(Math.ceil(secret_buffer_size / secretBuffer.length) + 1)
-        .join(secretBuffer.toString('hex')), 'hex')
-        .slice(0, secret_buffer_size
-    )
   }
 
   let buf = Buffer.alloc(8);
@@ -192,7 +147,6 @@ const hmacDigest = function(options: THmacDigest) {
 /**
  * Generate password \
  * https://en.wikipedia.org/wiki/HMAC-based_One-time_Password_algorithm
- * @param options options
  */
 export const hotpGenerate = function(options: THotp) {
   const data = { ...defaultOptions, ...options } as THotp;
@@ -217,7 +171,6 @@ export const hotpGenerate = function(options: THotp) {
 
 /**
  * Verify password
- * @param options options
  */
 export const hotpVerify = function(options: THotpVerify) {
   const data = { ...defaultOptions, ...options} as THotpVerify;
@@ -256,7 +209,6 @@ function totpCounter(period: number) {
 /**
  * Generate password \
  * https://en.wikipedia.org/wiki/Time-based_One-time_Password_algorithm
- * @param options options
  */
 export const totpGenerate = function(options: TTotp) {
   const data: THotp = { ...options }
@@ -268,7 +220,6 @@ export const totpGenerate = function(options: TTotp) {
 
 /**
  * Verify password
- * @param options options
  */
 export const totpVerify = function(options: TTotpVerify) {
   const data: THotpVerify = { ...options }

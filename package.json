@@ -11,9 +11,13 @@
     "type": "git",
     "url": "git@github.com:TimurRK/node-2fa.git"
   },
-  "keywords": ["2fa", "tfa", "authenticator"],
+  "keywords": [
+    "2fa",
+    "tfa",
+    "authenticator"
+  ],
   "engines": {
-    "node": "12.14.1"
+    "node": "12.20.2"
   },
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
@@ -21,13 +25,14 @@
   },
   "dependencies": {
     "crypto": "^1.0.1",
-    "hi-base32": "^0.5.0",
+    "hi-base32": "^0.5.1",
+    "nanoid": "^3.1.30",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "@types/node": "^13.7.2",
-    "ts-node": "^8.6.2",
-    "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.7.5"
+    "@types/node": "^16.11.1",
+    "ts-node": "^10.3.0",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.4"
   }
 }
