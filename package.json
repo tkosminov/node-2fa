@@ -16,9 +16,6 @@
     "tfa",
     "authenticator"
   ],
-  "engines": {
-    "node": "12.20.2"
-  },
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "prepublish": "tsc"
