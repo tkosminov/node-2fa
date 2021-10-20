@@ -4,7 +4,7 @@
   "description": "Two-factor authentication for nodejs",
   "engineStrict": true,
   "author": "t.kosminov",
-  "license": "ISC",
+  "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": {
