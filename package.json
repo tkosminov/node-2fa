@@ -1,8 +1,7 @@
 {
   "name": "node-tfa",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Two-factor authentication for nodejs",
-  "engineStrict": true,
   "author": "t.kosminov",
   "license": "MIT",
   "main": "dist/index.js",
