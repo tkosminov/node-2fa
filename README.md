@@ -1,9 +1,5 @@
 # node-tfa
 
-## Dependencies
-
-* [NodeJS 12.20.2](https://www.ubuntuupdates.org/ppa/nodejs_12.x?dist=bionic)
-
 ## Installation
 
 ```bash
