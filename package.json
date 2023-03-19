@@ -1,6 +1,6 @@
 {
   "name": "node-tfa",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Two-factor authentication for nodejs",
   "author": "t.kosminov",
   "license": "MIT",
@@ -22,13 +22,13 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "hi-base32": "^0.5.1",
-    "nanoid": "^3.3.2",
-    "rimraf": "^3.0.2"
+    "nanoid": "^3.3.4",
+    "rimraf": "^4.4.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.23",
-    "ts-node": "^10.7.0",
-    "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3"
+    "@types/node": "^18.15.3",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^5.0.2"
   }
 }

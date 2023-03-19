@@ -15,7 +15,7 @@ import Secret, { hotpGenerate, hotpVerify } from 'node-tfa';
 
 const secret = new Secret({ label: 'USER_NAME', issuer: 'APP_NAME' })
 
-const token = hotpGenerate({ secret: c.base32, counter: 1 })
+const token = hotpGenerate({ secret: secret.base32, counter: 1 })
 
 hotpVerify({ secret: secret.base32, counter: 1, token })
 ```
