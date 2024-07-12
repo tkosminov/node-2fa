@@ -62,7 +62,7 @@ class Secret {
 
   public qr_code?: string;
 
-  private googleChartUrl: string = 'https://chart.googleapis.com/chart?chs=166x166&chld=L|0&cht=qr&chl=';
+  private qr_code_url: string = 'https://api.qrserver.com/v1/create-qr-code/?size=166x166&data=';
   private label: string = '2FA_Test';
   private issuer: string = '2FA_Test';
 
@@ -82,7 +82,7 @@ class Secret {
 
       if (options.qr_code) {
         const otpauthURL = this.otpauthURL({ ...options } as TOtpauthURLOptions)
-        this.qr_code = `${this.googleChartUrl}${encodeURIComponent(otpauthURL)}`;
+        this.qr_code = `${this.qr_code_url}${encodeURIComponent(otpauthURL)}`;
       }
     }
   }

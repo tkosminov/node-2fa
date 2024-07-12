@@ -1,6 +1,6 @@
 {
   "name": "node-tfa",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Two-factor authentication for nodejs",
   "author": "t.kosminov",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git@github.com:TimurRK/node-2fa.git"
+    "url": "git@github.com:tkosminov/node-2fa.git"
   },
   "keywords": [
     "2fa",
@@ -16,19 +16,20 @@
     "authenticator"
   ],
   "scripts": {
+    "test": "ts-node test/test.ts",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "prepublish": "tsc"
   },
   "dependencies": {
     "crypto": "^1.0.1",
     "hi-base32": "^0.5.1",
-    "nanoid": "^3.3.4",
-    "rimraf": "^4.4.0"
+    "nanoid": "^3.3.4"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2",
-    "typescript": "^5.0.2"
+    "@types/node": "^20.14.10",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.3"
   }
 }
